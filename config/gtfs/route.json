@@ -1,9 +1,52 @@
 {
     "default_route_id_enabled": true,
-    "use_route_short_name_for_route_id": true,
+    "use_route_short_name_for_route_id": false,
+    "route_short_name_to_route_id_configs": [
+        {
+            "route_short_name": "NAN-VAN",
+            "route_id": 14022
+        },
+        {
+            "route_short_name": "VAN-NAN",
+            "route_id": 22014
+        }
+    ],
     "default_route_long_name_enabled": true,
     "direction_finder_enabled": true,
     "trip_headsign_remove_via": true,
-    "trip_headsign_cleaners": [],
-    "stop_name_cleaners": []
+    "trip_headsign_cleaners": [
+        {
+            "regex": "NAN",
+            "is_word": true,
+            "replacement": "Nanaimo"
+        },
+        {
+            "regex": "VAN",
+            "is_word": true,
+            "replacement": "Vancouver"
+        }
+    ],
+    "stop_id_not_supported_configs": [
+        {
+            "original_stop_id": "NAN",
+            "stop_id_int": 140
+        },
+        {
+            "original_stop_id": "VAN",
+            "stop_id_int": 220
+        }
+    ],
+    "stop_code_cleaners": [
+        {
+            "comment": "Remove Google Maps plus code",
+            "regex": "^\\w+\\+\\w+$",
+            "ignore_case": true
+        }
+    ],
+    "stop_name_cleaners": [
+        {
+            "regex": "^Hullo - ",
+            "comment": "Remove 'Hullo - ' prefix from stop names"
+        }
+    ]
 }
